@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 import matplotlib.collections  as mc
 from scipy.io import savemat
 from sklearn.metrics.pairwise import pairwise_distances
-from supVR import compute_C_first, update_P, init_C_inds, compute_C_closest
+from .supVR import compute_C_first, update_P, init_C_inds, compute_C_closest
 from logging import warn
 from time import time
-from common_utils import create_dir_if_not_exist
+from .common_utils import create_dir_if_not_exist
 
 class TopologicalData:
 
@@ -121,7 +121,7 @@ class TopologicalData:
         simplices
         """
     
-        P = np.zeros((x.shape[0], x.shape[0]), dtype = np.int)
+        P = np.zeros((x.shape[0], x.shape[0]), dtype = int)
         numFilt = len(neighborsv)
         nTriv = np.zeros(numFilt)
 
@@ -130,7 +130,7 @@ class TopologicalData:
 
         C = np.zeros(P.shape)
         C1 = np.zeros(P.shape)
-        C1bool = np.zeros(P.shape, dtype = np.bool)
+        C1bool = np.zeros(P.shape, dtype = bool)
 
         # Mask specifying Trues for blocks where row and column have
         # same labels
@@ -286,8 +286,8 @@ class TopologicalData:
         
         C = np.zeros(D.shape)
         C1 = np.zeros(D.shape)
-        C1bool = np.zeros(D.shape, dtype = np.bool)
-        P = np.zeros(D.shape, dtype = np.int)
+        C1bool = np.zeros(D.shape, dtype = bool)
+        P = np.zeros(D.shape, dtype = int)
 
         # Mask specifying Trues for blocks where row and column have
         # same labels
@@ -430,8 +430,8 @@ class TopologicalData:
         
         C = np.zeros(D.shape)
         C1 = np.zeros(D.shape)
-        C1bool = np.zeros(D.shape, dtype = np.bool)
-        P = np.zeros(D.shape, dtype = np.int)
+        C1bool = np.zeros(D.shape, dtype = bool)
+        P = np.zeros(D.shape, dtype = int)
 
         # Mask specifying Trues for blocks where row and column have
         # same labels
@@ -621,11 +621,11 @@ class TopologicalData:
         """
     
         P = np.zeros((x.shape[0], x.shape[0]), 
-                     dtype = np.int)
+                     dtype = int)
         numFilt = len(beta)
         nTriv = np.zeros(numFilt)
         C1 = np.zeros(P.shape)
-        C1bool = np.zeros(P.shape, dtype = np.bool)
+        C1bool = np.zeros(P.shape, dtype = bool)
 
         rows = np.ceil(float(numFilt)/5)
         cols = 5
